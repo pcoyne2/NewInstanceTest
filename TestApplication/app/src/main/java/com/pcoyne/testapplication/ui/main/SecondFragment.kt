@@ -1,6 +1,7 @@
 package com.pcoyne.testapplication.ui.main
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -23,8 +24,11 @@ class SecondFragment : Fragment() {
 
 
         arguments?.get(OBJECT)?.let {
+            Log.d("Argument", (it as TestObject).toString())
             viewModel.testObjectMutable.value = it as TestObject
+            Log.d("ViewModel", viewModel.testObjectMutable.value.toString())
             viewModel.testObjectMutable.value?.id = "second"
+            Log.d("UpdateSecViewModel", viewModel.testObjectMutable.value.toString())
         }
 
         view.findViewById<TextView>(R.id.message).setText(viewModel.testObjectMutable.value!!.id)
